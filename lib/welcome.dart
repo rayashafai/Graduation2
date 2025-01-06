@@ -51,7 +51,7 @@ class WelcomePage extends StatelessWidget {
                 ),
                 const SizedBox(height: 16),
                 Text(
-                  'Please sign in, sign up, or log in as admin to continue.',
+                  'Please sign in, sign up, log in as admin, or continue as an employee.',
                   style: TextStyle(
                     fontSize: 18,
                     color: Colors.brown[400]!
@@ -133,6 +133,32 @@ class WelcomePage extends StatelessWidget {
                         ),
                         child: const Text(
                           'Admin Login',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+                    // Employee button
+                    SizedBox(
+                      width: double.infinity, // Full width for Employee button
+                      height: 60, // Fixed height for Employee button
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/employees');
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor:
+                              Colors.green[400], // Green for employees
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          elevation: 5,
+                        ),
+                        child: const Text(
+                          'Employee',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 18,

@@ -17,6 +17,7 @@ import 'cartmodel.dart'; // Import CartModel
 import 'pay.dart';
 import 'bookingDate.dart';
 import 'map.dart';
+import 'employees.dart';
 
 void main() {
   runApp(
@@ -62,6 +63,9 @@ class MyApp extends StatelessWidget {
             return MaterialPageRoute(builder: (context) => CartPage());
           case '/bookingDate':
             return MaterialPageRoute(builder: (context) => BookingPage());
+          case '/employees':
+            return MaterialPageRoute(
+                builder: (context) => const EmployeesPage());
           case '/map':
             final args = settings.arguments
                 as Map<String, LatLng>; // Expect a map with coordinates
