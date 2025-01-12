@@ -123,7 +123,11 @@ class AdminPage extends StatelessWidget {
                       title: 'Logout',
                       description: 'Log out of the admin dashboard.',
                       onTap: () {
-                        // Handle Logout
+                        Navigator.pushNamedAndRemoveUntil(
+                          context,
+                          '/welcome', // Define a route to the welcome page
+                          (route) => false,
+                        ); // Handle Logout
                       },
                     ),
                   ],

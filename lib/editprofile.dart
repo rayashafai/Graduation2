@@ -19,112 +19,114 @@ class EditProfilePage extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: [
-              const CircleAvatar(
-                radius: 60,
-                backgroundImage: NetworkImage(
-                  'https://example.com/your-profile-image-url.jpg', // Replace with actual image URL
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              children: [
+                const CircleAvatar(
+                  radius: 60,
+                  backgroundImage: NetworkImage(
+                    'https://example.com/your-profile-image-url.jpg', // Replace with actual image URL
+                  ),
                 ),
-              ),
-              const SizedBox(height: 20),
-              // First Name
-              TextField(
-                decoration: InputDecoration(
-                  labelText: 'First Name',
-                  border: OutlineInputBorder(),
-                  hintText: 'Sabrina',
-                  filled: true,
-                  fillColor: Colors.white.withOpacity(0.7),
+                const SizedBox(height: 20),
+                // First Name
+                TextField(
+                  decoration: InputDecoration(
+                    labelText: 'First Name',
+                    border: OutlineInputBorder(),
+                    hintText: 'Sabrina',
+                    filled: true,
+                    fillColor: Colors.white.withOpacity(0.7),
+                  ),
                 ),
-              ),
-              const SizedBox(height: 10),
-              // Last Name
-              TextField(
-                decoration: InputDecoration(
-                  labelText: 'Last Name',
-                  border: OutlineInputBorder(),
-                  hintText: 'Aryan',
-                  filled: true,
-                  fillColor: Colors.white.withOpacity(0.7),
+                const SizedBox(height: 10),
+                // Last Name
+                TextField(
+                  decoration: InputDecoration(
+                    labelText: 'Last Name',
+                    border: OutlineInputBorder(),
+                    hintText: 'Aryan',
+                    filled: true,
+                    fillColor: Colors.white.withOpacity(0.7),
+                  ),
                 ),
-              ),
-              const SizedBox(height: 10),
-              // Email
-              TextField(
-                decoration: InputDecoration(
-                  labelText: 'Email',
-                  border: OutlineInputBorder(),
-                  hintText: 'SabrinaAry208@gmail.com',
-                  filled: true,
-                  fillColor: Colors.white.withOpacity(0.7),
+                const SizedBox(height: 10),
+                // Email
+                TextField(
+                  decoration: InputDecoration(
+                    labelText: 'Email',
+                    border: OutlineInputBorder(),
+                    hintText: 'SabrinaAry208@gmail.com',
+                    filled: true,
+                    fillColor: Colors.white.withOpacity(0.7),
+                  ),
                 ),
-              ),
-              const SizedBox(height: 10),
-              // Phone Number
-              TextField(
-                decoration: InputDecoration(
-                  labelText: 'Phone Number',
-                  border: OutlineInputBorder(),
-                  hintText: '+234 904 6470',
-                  filled: true,
-                  fillColor: Colors.white.withOpacity(0.7),
+                const SizedBox(height: 10),
+                // Phone Number
+                TextField(
+                  decoration: InputDecoration(
+                    labelText: 'Phone Number',
+                    border: OutlineInputBorder(),
+                    hintText: '+234 904 6470',
+                    filled: true,
+                    fillColor: Colors.white.withOpacity(0.7),
+                  ),
                 ),
-              ),
-              const SizedBox(height: 10),
-              // Username
-              TextField(
-                decoration: InputDecoration(
-                  labelText: 'Username',
-                  border: OutlineInputBorder(),
-                  hintText: 'Enter your username',
-                  filled: true,
-                  fillColor: Colors.white.withOpacity(0.7),
+                const SizedBox(height: 10),
+                // Username
+                TextField(
+                  decoration: InputDecoration(
+                    labelText: 'Username',
+                    border: OutlineInputBorder(),
+                    hintText: 'Enter your username',
+                    filled: true,
+                    fillColor: Colors.white.withOpacity(0.7),
+                  ),
                 ),
-              ),
-              const SizedBox(height: 10),
-              // Birth Date
-              TextField(
-                decoration: InputDecoration(
-                  labelText: 'Birth Date',
-                  border: OutlineInputBorder(),
-                  hintText: 'DD/MM/YYYY',
-                  filled: true,
-                  fillColor: Colors.white.withOpacity(0.7),
+                const SizedBox(height: 10),
+                // Birth Date
+                TextField(
+                  decoration: InputDecoration(
+                    labelText: 'Birth Date',
+                    border: OutlineInputBorder(),
+                    hintText: 'DD/MM/YYYY',
+                    filled: true,
+                    fillColor: Colors.white.withOpacity(0.7),
+                  ),
                 ),
-              ),
-              const SizedBox(height: 10),
-              // Gender
-              DropdownButtonFormField<String>(
-                decoration: InputDecoration(
-                  labelText: 'Gender',
-                  filled: true,
-                  fillColor: Colors.white.withOpacity(0.7),
+                const SizedBox(height: 10),
+                // Gender
+                DropdownButtonFormField<String>(
+                  decoration: InputDecoration(
+                    labelText: 'Gender',
+                    filled: true,
+                    fillColor: Colors.white.withOpacity(0.7),
+                  ),
+                  value: 'Select Gender', // Default value
+                  onChanged: (String? newValue) {},
+                  items: <String>['Select Gender', 'Male', 'Female', 'Other']
+                      .map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
                 ),
-                value: 'Select Gender', // Default value
-                onChanged: (String? newValue) {},
-                items: <String>['Select Gender', 'Male', 'Female', 'Other']
-                    .map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
-              ),
-              const SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.brown[400],
+                const SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.brown[400],
+                  ),
+                  child:
+                      const Text('Save', style: TextStyle(color: Colors.white)),
                 ),
-                child:
-                    const Text('Save', style: TextStyle(color: Colors.white)),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

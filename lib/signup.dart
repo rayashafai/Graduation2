@@ -34,104 +34,156 @@ class SignUpPage extends StatelessWidget {
             height: double.infinity,
           ),
           // Content on top of the background
-          Padding(
-            padding: const EdgeInsets.all(24.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                const Text(
-                  'Sign Up',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.brown, // Brown color for text
+          SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(24.0),
+              child: Column(
+                children: [
+                  const Text(
+                    'Sign Up',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.brown, // Brown color for text
+                    ),
+                    textAlign: TextAlign.center,
                   ),
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: 20),
-                // Name Field
-                TextField(
-                  decoration: InputDecoration(
-                    labelText: 'Name',
-                    labelStyle: TextStyle(
-                      color: Colors.brown[400], // Brown label color
+                  const SizedBox(height: 20),
+                  // First Name
+                  TextField(
+                    decoration: InputDecoration(
+                      labelText: 'First Name',
+                      border: OutlineInputBorder(),
+                      filled: true,
+                      fillColor: Colors.white.withOpacity(0.7),
                     ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    prefixIcon: const Icon(Icons.person,
-                        color: Colors.brown), // Brown icon color
                   ),
-                ),
-                const SizedBox(height: 16),
-                // Email Field
-                TextField(
-                  decoration: InputDecoration(
-                    labelText: 'Email',
-                    labelStyle: TextStyle(
-                      color: Colors.brown[400], // Brown label color
+                  const SizedBox(height: 16),
+                  // Last Name
+                  TextField(
+                    decoration: InputDecoration(
+                      labelText: 'Last Name',
+                      border: OutlineInputBorder(),
+                      filled: true,
+                      fillColor: Colors.white.withOpacity(0.7),
                     ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    prefixIcon: const Icon(Icons.email,
-                        color: Colors.brown), // Brown icon color
                   ),
-                ),
-                const SizedBox(height: 16),
-                // Password Field
-                TextField(
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    labelText: 'Password',
-                    labelStyle: TextStyle(
-                      color: Colors.brown[400], // Brown label color
+                  const SizedBox(height: 16),
+                  // Email Field
+                  TextField(
+                    decoration: InputDecoration(
+                      labelText: 'Email',
+                      border: OutlineInputBorder(),
+                      filled: true,
+                      fillColor: Colors.white.withOpacity(0.7),
                     ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    prefixIcon: const Icon(Icons.lock,
-                        color: Colors.brown), // Brown icon color
                   ),
-                ),
-                const SizedBox(height: 80),
-                // Sign Up button
-                SizedBox(
-                  width: 150, // Fixed width for Sign Up button
-                  height: 60, // Fixed height for Sign Up button
-                  child: ElevatedButton(
-                    onPressed: () {
-                      // Handle the sign-up logic here
-
-                      // Navigate to Home page after successful sign-up
-                      Navigator.pushReplacementNamed(context, '/home');
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.brown[400], // Updated parameter
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8.0),
+                  const SizedBox(height: 16),
+                  // Password Field
+                  TextField(
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      labelText: 'Password',
+                      border: OutlineInputBorder(),
+                      filled: true,
+                      fillColor: Colors.white.withOpacity(0.7),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  // Repeat Password Field
+                  TextField(
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      labelText: 'Repeat Password',
+                      border: OutlineInputBorder(),
+                      filled: true,
+                      fillColor: Colors.white.withOpacity(0.7),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  // Phone Number
+                  TextField(
+                    decoration: InputDecoration(
+                      labelText: 'Phone Number',
+                      border: OutlineInputBorder(),
+                      filled: true,
+                      fillColor: Colors.white.withOpacity(0.7),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  // Username
+                  TextField(
+                    decoration: InputDecoration(
+                      labelText: 'Username',
+                      border: OutlineInputBorder(),
+                      filled: true,
+                      fillColor: Colors.white.withOpacity(0.7),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  // Birth Date
+                  TextField(
+                    decoration: InputDecoration(
+                      labelText: 'Birth Date',
+                      hintText: 'DD/MM/YYYY',
+                      border: OutlineInputBorder(),
+                      filled: true,
+                      fillColor: Colors.white.withOpacity(0.7),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  // Gender
+                  DropdownButtonFormField<String>(
+                    decoration: InputDecoration(
+                      labelText: 'Gender',
+                      filled: true,
+                      fillColor: Colors.white.withOpacity(0.7),
+                    ),
+                    value: 'Select Gender', // Default value
+                    onChanged: (String? newValue) {},
+                    items: <String>['Select Gender', 'Male', 'Female', 'Other']
+                        .map<DropdownMenuItem<String>>((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
+                  ),
+                  const SizedBox(height: 20),
+                  SizedBox(
+                    width: double.infinity,
+                    height: 60,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        // Handle the sign-up logic here
+                        Navigator.pushReplacementNamed(context, '/home');
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.brown[400],
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                      ),
+                      child: const Text(
+                        'Sign Up',
+                        style: TextStyle(fontSize: 18, color: Colors.white),
                       ),
                     ),
-                    child: const Text(
-                      'Sign Up',
-                      style: TextStyle(fontSize: 18, color: Colors.white),
+                  ),
+                  const SizedBox(height: 16),
+                  Center(
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/signin');
+                      },
+                      child: const Text(
+                        "Already have an account? Sign In",
+                        style: TextStyle(color: Colors.brown),
+                      ),
                     ),
                   ),
-                ),
-                const SizedBox(height: 16),
-                Center(
-                  child: TextButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/signin');
-                    },
-                    child: const Text(
-                      "Already have an account? Sign In",
-                      style: TextStyle(color: Colors.brown), // Brown text color
-                    ),
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ],

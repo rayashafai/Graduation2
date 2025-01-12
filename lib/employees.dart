@@ -3,6 +3,7 @@ import 'package:graduation2/salary.dart';
 import 'package:graduation2/vacations.dart';
 import 'home.dart';
 import 'profile.dart';
+import 'viewTeam.dart';
 
 class EmployeesPage extends StatelessWidget {
   const EmployeesPage({Key? key}) : super(key: key);
@@ -104,7 +105,11 @@ class EmployeesPage extends StatelessWidget {
                   title: 'View Team',
                   description: 'Check your team members.',
                   onTap: () {
-                    // Navigate to Team Page
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ViewTeamPage()),
+                    ); // Navigate to Team Page
                   },
                 ),
                 _buildEmployeeCard(
