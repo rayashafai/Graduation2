@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graduation2/empNotification.dart';
 import 'package:graduation2/salary.dart';
 import 'package:graduation2/vacations.dart';
 import 'home.dart';
@@ -83,7 +84,19 @@ class EmployeesPage extends StatelessWidget {
                   title: 'Notifications',
                   description: 'View your notifications.',
                   onTap: () {
-                    // Navigate to Notifications Page
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => EmpNotificationPage(
+                          onSendNotification: (String title, String message) {
+                            // Handle the notification logic here
+                            print(
+                                'Notification Sent: Title: $title, Message: $message');
+                          },
+                        ),
+                      ),
+                    );
+// Navigate to Notifications Page
                   },
                 ),
                 _buildEmployeeCard(

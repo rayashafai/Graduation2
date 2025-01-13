@@ -1,11 +1,8 @@
-//import 'package:firstt/setting.dart';
 import 'package:flutter/material.dart';
-import 'setting.dart';
-
-// Import the Manage Users Page
 import 'manageusers.dart';
 import 'managecontent.dart';
 import 'notification.dart';
+import 'setting.dart';
 
 class AdminPage extends StatelessWidget {
   const AdminPage({Key? key}) : super(key: key);
@@ -101,7 +98,15 @@ class AdminPage extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const NotificationsPage(),
+                            builder: (context) => NotificationsPage(
+                              notifications: [], // Pass required notifications list
+                              onSendNotification:
+                                  (String title, String message) {
+                                // Handle notification logic here
+                                print(
+                                    'Notification Sent: Title: $title, Message: $message');
+                              },
+                            ),
                           ),
                         ); // Navigate to Notifications Page
                       },
