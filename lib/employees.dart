@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:graduation2/empNotification.dart';
+//import 'package:graduation2/empNotification.dart';
 import 'package:graduation2/salary.dart';
 import 'package:graduation2/vacations.dart';
 import 'home.dart';
 import 'profile.dart';
 import 'viewTeam.dart';
+import 'empNotification.dart';
+
+// Shared notifications list
+List<Map<String, String>> notificationsList = [];
 
 class EmployeesPage extends StatelessWidget {
   const EmployeesPage({Key? key}) : super(key: key);
@@ -19,7 +23,7 @@ class EmployeesPage extends StatelessWidget {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: NetworkImage(
+            image: const NetworkImage(
               'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgpG5mthX6nD0IedvjM69paFE3UtnGK9E74Q&s',
             ),
             fit: BoxFit.cover,
@@ -87,14 +91,7 @@ class EmployeesPage extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => EmpNotificationPage(
-                          onSendNotification: (String title, String message) {
-                            // Handle the notification logic here
-                            print(
-                                'Notification Sent: Title: $title, Message: $message');
-                          },
-                        ),
-                      ),
+                          builder: (context) => EmpNotificationPage()),
                     );
 // Navigate to Notifications Page
                   },

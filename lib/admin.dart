@@ -3,6 +3,8 @@ import 'manageusers.dart';
 import 'managecontent.dart';
 import 'notification.dart';
 import 'setting.dart';
+import 'package:provider/provider.dart'; // Provider for state management
+import 'notifiProvider.dart'; // Import NotificationProvider
 
 class AdminPage extends StatelessWidget {
   const AdminPage({Key? key}) : super(key: key);
@@ -15,7 +17,7 @@ class AdminPage extends StatelessWidget {
         backgroundColor: Colors.brown[400],
       ),
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: NetworkImage(
               'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgpG5mthX6nD0IedvjM69paFE3UtnGK9E74Q&s',
@@ -70,7 +72,7 @@ class AdminPage extends StatelessWidget {
                           MaterialPageRoute(
                             builder: (context) => const ManageContentPage(),
                           ),
-                        ); // Navigate to Manage Content Page
+                        );
                       },
                     ),
                     // Settings Card
@@ -85,7 +87,7 @@ class AdminPage extends StatelessWidget {
                           MaterialPageRoute(
                             builder: (context) => const SettingsPage(),
                           ),
-                        ); // Navigate to Settings Page
+                        );
                       },
                     ),
                     // Notifications Card
@@ -95,20 +97,7 @@ class AdminPage extends StatelessWidget {
                       title: 'Notifications',
                       description: 'Send and view notifications.',
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => NotificationsPage(
-                              notifications: [], // Pass required notifications list
-                              onSendNotification:
-                                  (String title, String message) {
-                                // Handle notification logic here
-                                print(
-                                    'Notification Sent: Title: $title, Message: $message');
-                              },
-                            ),
-                          ),
-                        ); // Navigate to Notifications Page
+                        Navigator.pushNamed(context, '/notification');
                       },
                     ),
                     // Reports Card
@@ -130,9 +119,9 @@ class AdminPage extends StatelessWidget {
                       onTap: () {
                         Navigator.pushNamedAndRemoveUntil(
                           context,
-                          '/welcome', // Define a route to the welcome page
+                          '/welcome',
                           (route) => false,
-                        ); // Handle Logout
+                        );
                       },
                     ),
                   ],

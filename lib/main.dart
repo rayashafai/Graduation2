@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart'; // Provider for state management
 import 'package:google_maps_flutter/google_maps_flutter.dart'; // For Google Maps
 import 'cartmodel.dart'; // Import CartModel for Provider
+import 'notifiProvider.dart'; // NotificationProvider for notifications
 
 // Import all required pages
 import 'welcome.dart';
@@ -25,8 +26,13 @@ import 'notification.dart';
 
 void main() {
   runApp(
-    ChangeNotifierProvider(
-      create: (_) => CartModel(), // CartModel provided globally
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+            create: (_) => CartModel()), // CartModel provider
+        ChangeNotifierProvider(
+            create: (_) => NotificationModel()), // NotificationProvider
+      ],
       child: const MyApp(),
     ),
   );
@@ -98,27 +104,10 @@ class MyApp extends StatelessWidget {
       case '/admin':
         return MaterialPageRoute(builder: (context) => const AdminPage());
       case '/empNotification':
-        return MaterialPageRoute(
-          builder: (context) => EmpNotificationPage(
-            onSendNotification: (String title, String message) {
-              // Handle sending notification logic here
-              print('Notification Sent: Title: $title, Message: $message');
-            },
-          ),
-        );
+        return MaterialPageRoute(builder: (context) => EmpNotificationPage());
 
       case '/notification':
-        final notifications = settings.arguments as List<Map<String, String>>;
-        return MaterialPageRoute(
-          builder: (context) => NotificationsPage(
-            notifications:
-                notifications, // Pass the required list of notifications
-            onSendNotification: (String title, String message) {
-              // Handle notification logic here
-              print('Notification Sent: Title: $title, Message: $message');
-            },
-          ),
-        );
+        return MaterialPageRoute(builder: (context) => NotificationPage());
 
       default:
         return MaterialPageRoute(builder: (context) => const WelcomePage());

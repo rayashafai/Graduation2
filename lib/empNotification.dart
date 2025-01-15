@@ -1,78 +1,83 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'notifiProvider.dart';
 
-class EmpNotificationPage extends StatefulWidget {
-  final void Function(String title, String message) onSendNotification;
-
-  const EmpNotificationPage({Key? key, required this.onSendNotification})
-      : super(key: key);
-
-  @override
-  _EmpNotificationPageState createState() => _EmpNotificationPageState();
-}
-
-class _EmpNotificationPageState extends State<EmpNotificationPage> {
+class EmpNotificationPage extends StatelessWidget {
   final TextEditingController titleController = TextEditingController();
   final TextEditingController messageController = TextEditingController();
-
-  void _sendNotification() {
-    final title = titleController.text.trim();
-    final message = messageController.text.trim();
-
-    if (title.isNotEmpty && message.isNotEmpty) {
-      widget.onSendNotification(title, message);
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Notification sent to admin!')),
-      );
-      titleController.clear();
-      messageController.clear();
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Please fill out all fields.')),
-      );
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Employee Notifications'),
-        backgroundColor: Colors.purple,
+        title: const Text('Send Notification'),
+        backgroundColor: Colors.brown[400],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
-              'Send Notification to Admin',
+              'Notification Title',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 8),
             TextField(
               controller: titleController,
               decoration: const InputDecoration(
-                labelText: 'Notification Title',
                 border: OutlineInputBorder(),
+                hintText: 'Enter notification title',
               ),
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 16),
+            const Text(
+              'Notification Message',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 8),
             TextField(
               controller: messageController,
               decoration: const InputDecoration(
-                labelText: 'Notification Message',
                 border: OutlineInputBorder(),
+                hintText: 'Enter notification message',
               ),
               maxLines: 4,
             ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: _sendNotification,
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.purple,
-                padding: const EdgeInsets.symmetric(vertical: 14),
+            const Spacer(),
+            Center(
+              child: ElevatedButton(
+                onPressed: () {
+                  // Get the title and message
+                  final title = titleController.text.trim();
+                  final message = messageController.text.trim();
+
+                  if (title.isNotEmpty && message.isNotEmpty) {
+                    // Add notification to the model
+                    Provider.of<NotificationModel>(context, listen: false)
+                        .addNotification(title, message);
+
+                    // Clear the text fields
+                    titleController.clear();
+                    messageController.clear();
+
+                    // Show a confirmation message
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('Notification added!')),
+                    );
+                  } else {
+                    // Show an error if fields are empty
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                          content: Text('Please enter both title and message')),
+                    );
+                  }
+                },
+                child: const Text(
+                  'Send Notification',
+                  style: TextStyle(fontSize: 18, color: Colors.white),
+                ),
               ),
-              child: const Text('Send Notification'),
             ),
           ],
         ),
