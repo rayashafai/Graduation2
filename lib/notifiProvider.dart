@@ -10,6 +10,11 @@ class NotificationModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  void removeNotification(int index) {
+    _notifications.removeAt(index);
+    notifyListeners();
+  }
+
   void clearNotifications() {
     _notifications.clear();
     notifyListeners();
