@@ -27,10 +27,10 @@ class _VacationPageState extends State<VacationPage> {
         backgroundColor: const Color.fromARGB(255, 92, 141, 197),
       ),
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: NetworkImage(
-              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxlAl2OeUvdsXxOHCUB1nrp6dZ9lClLNTD5Q&s',
+              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmRqIqWA4S6GhbaNogujnGuNBZYbJVsfiyCg&s',
             ),
             fit: BoxFit.cover,
           ),

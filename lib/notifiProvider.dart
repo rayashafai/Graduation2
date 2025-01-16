@@ -5,8 +5,8 @@ class NotificationModel extends ChangeNotifier {
 
   List<Map<String, String>> get notifications => _notifications;
 
-  void addNotification(String title, String message) {
-    _notifications.add({'title': title, 'message': message});
+  void addNotification(String title, String message, {required String source}) {
+    _notifications.add({'title': title, 'message': message, 'source': source});
     notifyListeners();
   }
 

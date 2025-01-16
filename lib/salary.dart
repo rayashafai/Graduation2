@@ -11,10 +11,10 @@ class SalaryPage extends StatelessWidget {
         backgroundColor: const Color.fromARGB(255, 109, 185, 113),
       ),
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: NetworkImage(
-              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxrDiVStmfCXJ8OtCmS8Toekd7Q9uYPx9Mog&s',
+              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLinTjrS6pNGKcHfuuEhtpPXfDFm-eb0aqDw&s',
             ),
             fit: BoxFit.cover,
           ),
@@ -30,7 +30,7 @@ class SalaryPage extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 28,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                    color: Colors.black,
                   ),
                   textAlign: TextAlign.center,
                 ),
@@ -145,7 +145,7 @@ class SalaryPage extends StatelessWidget {
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
-            color: Colors.white,
+            color: Colors.black,
           ),
         ),
         const SizedBox(height: 10),

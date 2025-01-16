@@ -10,40 +10,52 @@ class SettingsPage extends StatelessWidget {
         title: const Text('Settings'),
         backgroundColor: Colors.blue,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: ListView(
-          children: [
-            // Section: Account Settings
-            _buildSectionTitle('Account Settings'),
-            _buildSettingItem(Icons.person, 'Personal & Profile'),
-            _buildSettingItem(Icons.lock, 'Password'),
-            _buildSettingItem(Icons.storage, 'Data'),
+      body: Stack(
+        children: [
+          // Background Image
+          Positioned.fill(
+            child: Image.network(
+              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmRqIqWA4S6GhbaNogujnGuNBZYbJVsfiyCg&s',
+              fit: BoxFit.cover,
+            ),
+          ),
+          // Content
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: ListView(
+              children: [
+                // Section: Account Settings
+                _buildSectionTitle('Account Settings'),
+                _buildSettingItem(Icons.person, 'Personal & Profile'),
+                _buildSettingItem(Icons.lock, 'Password'),
+                _buildSettingItem(Icons.storage, 'Data'),
 
-            const Divider(),
+                const Divider(),
 
-            // Section: Company
-            _buildSectionTitle('Company'),
-            _buildSettingItem(Icons.business, 'Company Details'),
-            _buildSettingItem(Icons.people, 'Team Members', onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const SettingsPage(),
-                ),
-              );
-            }),
+                // Section: Company
+                _buildSectionTitle('Company'),
+                _buildSettingItem(Icons.business, 'Company Details'),
+                _buildSettingItem(Icons.people, 'Team Members', onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SettingsPage(),
+                    ),
+                  );
+                }),
 
-            const Divider(),
+                const Divider(),
 
-            // Section: Format Settings
-            _buildSectionTitle('Format Settings'),
-            _buildSettingItem(Icons.format_shapes, 'Job Boards'),
-            _buildSettingItem(Icons.work, 'Positions'),
-            _buildSettingItem(Icons.block, 'Rejection Reasons'),
-            _buildSettingItem(Icons.message, 'Automated Messages'),
-          ],
-        ),
+                // Section: Format Settings
+                _buildSectionTitle('Format Settings'),
+                _buildSettingItem(Icons.format_shapes, 'Job Boards'),
+                _buildSettingItem(Icons.work, 'Positions'),
+                _buildSettingItem(Icons.block, 'Rejection Reasons'),
+                _buildSettingItem(Icons.message, 'Automated Messages'),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

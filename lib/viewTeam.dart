@@ -56,10 +56,10 @@ class _ViewTeamPageState extends State<ViewTeamPage> {
         backgroundColor: Colors.brown[400],
       ),
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: NetworkImage(
-              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzWRVwlhnLPtC3F-MvdxqMEEhvLDtBtZ-bmA&usqp=CAU',
+              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH1Muu9tR08etyk7_sXXO08TRZGWFPKpzdUg&s',
             ),
             fit: BoxFit.cover,
           ),
