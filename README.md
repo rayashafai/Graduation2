@@ -50,8 +50,6 @@ Node.js & npm: Download
 🔹 Steps to Run the Project
 1️⃣ Clone the Repository
 
-git clone https://github.com/your-username/shine-craft.git
-cd shine-craft
 2️⃣ Install Flutter Dependencies
 
 flutter pub get
@@ -72,8 +70,6 @@ node server.js
 5️⃣ Run the Flutter App
 
 flutter run
-🎨 UI Screenshots (Optional)
-(Include screenshots of the app here to showcase its design and features.)
 
 🤝 Contributing
 If you'd like to contribute, feel free to fork this repository and submit a pull request!
@@ -81,7 +77,3 @@ If you'd like to contribute, feel free to fork this repository and submit a pull
 📜 License
 This project is licensed under the MIT License – see the LICENSE file for details.
 
-📬 Contact
-If you have any questions or suggestions, feel free to reach out:
-📧 diana.qwariq2002@gmail.com
-🌐 Your LinkedIn: https://www.linkedin.com/in/diana-qwariq-ce120/
